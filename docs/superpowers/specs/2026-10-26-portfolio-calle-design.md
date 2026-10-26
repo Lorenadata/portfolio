@@ -140,6 +140,12 @@ Siempre visible. Muestra una **página normal, rápida y accesible** con todo lo
 
 Un recruiter cruzará la web con el CV y el GitHub. La web **solo afirma lo que se puede comprobar en el GitHub**, y el CV se revisa para que cuente lo mismo. La foto profesional de Lorena aparece en "Sobre mí".
 
+### Decisiones finales de Lorena (26/10/2026)
+
+- **Se reconstruye el modelo XGBoost** de predicción de cancelaciones (`cancelled_rides_by_customer`) sobre el dataset de 150.000 viajes, en R, y se publica en el repo `ncr-ride-sharing-eda`. Tiene que ser un modelo evaluado de verdad: separación train/test sin fuga de información (excluir variables que solo existen después de la cancelación), métricas adecuadas para clases desbalanceadas, comparación con un modelo base e importancia de variables. Lorena tiene que entenderlo y poder defenderlo, así que va con explicaciones claras. Cuando esté publicado, la parada de ride-sharing gana una interacción extra: **"¿cancelará este viaje?"**, que predice a partir de variables que elige el visitante, con probabilidades precalculadas o con el modelo exportado. Las métricas que se muestren serán las reales, aunque sean modestas.
+- **Dominio: `lorenamarcos.dev`.** Lo compra Lorena (sujeto a disponibilidad).
+- **Foto:** la foto profesional del CV aparece en "Sobre mí".
+
 ## 10. Qué queda en manos de quien construye
 
 La estructura del código, las librerías concretas, la técnica de profundidad y paralaje, el sistema de transiciones, el diseño exacto de cada capa interactiva dentro de lo descrito en §5, los textos del lema y la cita (que aprueba Lorena) y el orden de las paradas en la calle (con RaceTrack como protagonista).
