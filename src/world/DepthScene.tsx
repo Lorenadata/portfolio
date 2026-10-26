@@ -23,13 +23,15 @@ interface Props {
   focusedStop: StopId | null
   /** 0 si la escena entra con un fundido. */
   initialOpacity: number
+  /** Se llama cuando la escena ya tiene sus texturas y está en pantalla. */
+  onShown?(): void
 }
 
 const MOBILE_U: [number, number] = [0.22, 0.56]
 const DESKTOP_U: [number, number] = [0, 1]
 
 export const DepthScene = forwardRef<DepthSceneHandle, Props>(function DepthScene(
-  { id, mobile, segments, stops, signText, lit, focusedStop, initialOpacity },
+  { id, mobile, segments, stops, signText, lit, focusedStop, initialOpacity, onShown },
   ref,
 ) {
   const def = sceneById(id)
@@ -54,6 +56,7 @@ export const DepthScene = forwardRef<DepthSceneHandle, Props>(function DepthScen
   useLayoutEffect(() => {
     material.opacity = initialOpacity
     group.current.position.z = initialOpacity === 0 ? -3 : 0
+    onShown?.()
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [material])
 

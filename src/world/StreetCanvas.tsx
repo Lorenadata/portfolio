@@ -1,6 +1,6 @@
 import { Suspense, useEffect, useMemo, useRef, useState } from 'react'
 import { Canvas, useFrame, useThree } from '@react-three/fiber'
-import { useTexture } from '@react-three/drei'
+import { useProgress, useTexture } from '@react-three/drei'
 import { Bloom, EffectComposer } from '@react-three/postprocessing'
 import * as THREE from 'three'
 import type { SceneId, Stop } from '../content/stops'
@@ -24,11 +24,14 @@ interface Props {
   onArrived(): void
   onContextLost(): void
   onReady?(): void
+  onProgress?(p: number): void
 }
 
 const ease = (t: number) => (t < 0.5 ? 4 * t * t * t : 1 - Math.pow(-2 * t + 2, 3) / 2)
 
-function Street({ walk, stops, quality, signText, onArrived, onReady }: Omit<Props, 'onContextLost'>) {
+function Street({ walk, stops, quality, signText, onArrived, onReady, onProgress }: Omit<Props, 'onContextLost'>) {
+  const progress = useProgress((s) => s.progress)
+  useEffect(() => onProgress?.(progress), [progress, onProgress])
   const { camera, size, pointer } = useThree()
   const mobile = size.width / size.height < 1
   const stop = stops[walk.index]
@@ -39,10 +42,12 @@ function Street({ walk, stops, quality, signText, onArrived, onReady }: Omit<Pro
   const segments: [number, number] = quality === 'high' ? [256, 144] : [128, 72]
 
   // Precarga del resto de escenas cuando la primera ya está en pantalla.
+  const [firstShown, setFirstShown] = useState(false)
   useEffect(() => {
+    if (!firstShown) return
     onReady?.()
     for (const s of SCENES) useTexture.preload(Object.values(sceneUrls(s.id, mobile)))
-  }, [mobile, onReady])
+  }, [firstShown, mobile, onReady])
 
   // Cambio de parada: si cambia la escena, viaje; si no, paneo hacia el rótulo.
   useEffect(() => {
@@ -119,6 +124,7 @@ function Street({ walk, stops, quality, signText, onArrived, onReady }: Omit<Pro
             lit={id === shown.current && !shown.leaving}
             focusedStop={walk.phase === 'idle' ? stop.id : null}
             initialOpacity={id === shown.current && shown.leaving ? 0 : 1}
+            onShown={firstShown ? undefined : () => setFirstShown(true)}
           />
         </Suspense>
       ))}
