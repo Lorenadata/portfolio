@@ -1,0 +1,20 @@
+.rec { min-height: 100%; padding: 48px clamp(16px, 6vw, 96px) 64px; background: radial-gradient(1200px 600px at 80% -10%, rgba(45,212,191,.12), transparent 60%), var(--night); }
+.rec__header { max-width: 900px; }
+.rec__top { display: flex; justify-content: space-between; align-items: center; gap: 16px; flex-wrap: wrap; }
+.rec__eyebrow { margin: 0; font-size: 12px; letter-spacing: .3em; text-transform: uppercase; color: var(--accent); }
+.rec__tools { display: flex; gap: 18px; align-items: center; }
+.rec__lang { background: none; border: 0; color: var(--ink-dim); font: 14px var(--sans); cursor: pointer; }
+.rec__walk { font-family: var(--serif); font-size: 17px; text-decoration: none; border-bottom: 1px solid var(--accent); }
+.rec__name { margin: 18px 0 6px; font-family: var(--serif); font-weight: 600; font-size: clamp(40px, 6vw, 72px); letter-spacing: .06em; text-transform: uppercase; }
+.rec__role { margin: 0 0 6px; font-size: 17px; color: var(--ink-dim); }
+.rec__seeking { margin: 0 0 24px; font-family: var(--serif); font-size: 21px; }
+.rec__contact { display: flex; flex-wrap: wrap; gap: 10px; }
+.rec__section { margin: 48px 0 18px; font-size: 12px; letter-spacing: .3em; text-transform: uppercase; color: var(--ink-dim); font-weight: 500; }
+.rec__grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(min(100%, 320px), 1fr)); gap: 18px; }
+.rec__card { padding: 22px; border-radius: 12px; background: rgba(255,255,255,.03); border: 1px solid rgba(255,255,255,.08); border-top: 3px solid var(--neon); }
+.rec__card h3 { margin: 0 0 8px; font-family: var(--serif); font-size: 24px; }
+.rec__tagline { margin: 0 0 10px; color: var(--ink); line-height: 1.5; }
+.rec__result { margin: 0 0 16px; font-size: 14px; color: var(--ink-dim); }
+.rec__links { display: flex; gap: 16px; flex-wrap: wrap; font-size: 14px; }
+.rec__links a { color: var(--neon); text-decoration: none; }
+.rec__links a:hover { text-decoration: underline; }

@@ -3,6 +3,7 @@ import { activeStops } from './content/stops'
 import { useI18n } from './i18n'
 import { canRender3D, currentEnv, detectQuality, type Quality } from './lib/capabilities'
 import { useRoute } from './lib/route'
+import { RecruiterMode } from './recruiter/RecruiterMode'
 import { Brand, Loader, Minimap, ProjectCard, Quote, TopBar, WalkControl } from './ui/components'
 import './ui/ui.css'
 import { walkReducer, type WalkAction, type WalkState } from './world/walk'
@@ -47,8 +48,7 @@ export default function App({ env }: AppProps) {
   const toRecruiter = useCallback(() => go({ view: 'recruiter' }), [go])
 
   if (!can3D || route.view === 'recruiter') {
-    // Tarea 8: Recruiter Mode.
-    return <main id="recruiter" />
+    return <RecruiterMode stops={stops} canWalk={can3D} />
   }
 
   return (
