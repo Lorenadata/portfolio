@@ -1,0 +1,39 @@
+{
+  "mediana": 19307,
+  "inquilinos": {
+    "pct_poblacion": 21,
+    "renta_media": 17073,
+    "p10": 6155,
+    "p50": 15178,
+    "p90": 29675,
+    "ratio_p90_p10": 4.8,
+    "pct_baja": 46.2
+  },
+  "no_inquilinos": {
+    "pct_poblacion": 79,
+    "renta_media": 23008,
+    "p10": 9481,
+    "p50": 20671,
+    "p90": 38653,
+    "ratio_p90_p10": 4.1,
+    "pct_baja": 26.2
+  },
+  "caseros": {
+    "pct_poblacion": 16.8,
+    "renta_media": 29540,
+    "p10": 12896,
+    "p50": 26250,
+    "p90": 48977,
+    "ratio_p90_p10": 3.8,
+    "pct_alta": 21.7
+  },
+  "no_caseros": {
+    "pct_poblacion": 83.2,
+    "renta_media": 20194,
+    "p10": 7945,
+    "p50": 18221,
+    "p90": 34312,
+    "ratio_p90_p10": 4.3,
+    "pct_alta": 6.2
+  }
+}

@@ -1,0 +1,78 @@
+{
+  "general": {
+    "menores": 34.72,
+    "resto": 24.31
+  },
+  "celdas": [
+    {
+      "tiphogar": "monoparental",
+      "tenencia": "alquiler",
+      "tasa": 68.63,
+      "n": 441,
+      "suficiente": true
+    },
+    {
+      "tiphogar": "monoparental",
+      "tenencia": "no_alquiler",
+      "tasa": 45.23,
+      "n": 988,
+      "suficiente": true
+    },
+    {
+      "tiphogar": "dos_adultos_1",
+      "tenencia": "alquiler",
+      "tasa": 37.79,
+      "n": 373,
+      "suficiente": true
+    },
+    {
+      "tiphogar": "dos_adultos_1",
+      "tenencia": "no_alquiler",
+      "tasa": 14.06,
+      "n": 1587,
+      "suficiente": true
+    },
+    {
+      "tiphogar": "dos_adultos_2",
+      "tenencia": "alquiler",
+      "tasa": 54.17,
+      "n": 776,
+      "suficiente": true
+    },
+    {
+      "tiphogar": "dos_adultos_2",
+      "tenencia": "no_alquiler",
+      "tasa": 17.01,
+      "n": 4308,
+      "suficiente": true
+    },
+    {
+      "tiphogar": "dos_adultos_3mas",
+      "tenencia": "alquiler",
+      "tasa": 72.24,
+      "n": 589,
+      "suficiente": true
+    },
+    {
+      "tiphogar": "dos_adultos_3mas",
+      "tenencia": "no_alquiler",
+      "tasa": 38.03,
+      "n": 1241,
+      "suficiente": true
+    },
+    {
+      "tiphogar": "otros_con_ninos",
+      "tenencia": "alquiler",
+      "tasa": 53.12,
+      "n": 281,
+      "suficiente": true
+    },
+    {
+      "tiphogar": "otros_con_ninos",
+      "tenencia": "no_alquiler",
+      "tasa": 36.45,
+      "n": 653,
+      "suficiente": true
+    }
+  ]
+}

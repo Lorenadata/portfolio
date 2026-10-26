@@ -1,0 +1,35 @@
+{
+  "pasos": [
+    {
+      "id": "original",
+      "filas": 150000,
+      "marcadas": 0
+    },
+    {
+      "id": "nulos",
+      "filas": 150000,
+      "marcadas": 57000
+    },
+    {
+      "id": "duplicados",
+      "filas": 150000,
+      "marcadas": 2457
+    },
+    {
+      "id": "outliers_iqr",
+      "filas": 150000,
+      "marcadas": 11461
+    },
+    {
+      "id": "outliers_lof",
+      "filas": 150000,
+      "marcadas": 1
+    }
+  ],
+  "lof": {
+    "k": 11,
+    "umbral": 1.5,
+    "completos": 93000,
+    "max_score": 1.557
+  }
+}
