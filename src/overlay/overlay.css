@@ -1,0 +1,13 @@
+.overlay { position: fixed; inset: 0; z-index: 4; display: grid; place-items: center; padding: clamp(8px, 3vw, 40px); animation: overlay-in .35s ease both; }
+@keyframes overlay-in { from { opacity: 0; } }
+.overlay__bg { position: absolute; inset: 0; background: url('/scenes/interior/color.webp') center/cover, rgba(5,7,12,.6); filter: blur(18px) brightness(.45); transform: scale(1.1); }
+.overlay__panel { position: relative; width: min(1180px, 100%); max-height: 100%; overflow: auto; border-radius: 16px; background: rgba(9,13,20,.82);
+  border: 1px solid color-mix(in srgb, var(--neon) 45%, transparent); box-shadow: 0 30px 80px rgba(0,0,0,.6), 0 0 50px color-mix(in srgb, var(--neon) 15%, transparent); backdrop-filter: blur(16px); }
+.overlay__header { position: sticky; top: 0; z-index: 1; display: flex; justify-content: space-between; align-items: center; gap: 16px; padding: 20px 28px; background: rgba(9,13,20,.92); border-bottom: 1px solid rgba(255,255,255,.07); }
+.overlay__eyebrow { margin: 0 0 4px; font-size: 11px; letter-spacing: .28em; text-transform: uppercase; color: var(--neon); }
+.overlay__title { margin: 0; font-family: var(--serif); font-size: clamp(24px, 3vw, 34px); font-weight: 600; outline: none; }
+.overlay__body { padding: 24px 28px; }
+.overlay__loading { color: var(--ink-dim); }
+.overlay__footer { display: flex; gap: 20px; padding: 16px 28px 24px; font-size: 14px; }
+.overlay__footer a { color: var(--neon); }
+@media (max-width: 760px) { .overlay__header, .overlay__body, .overlay__footer { padding-left: 16px; padding-right: 16px; } }

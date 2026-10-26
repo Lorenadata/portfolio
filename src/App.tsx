@@ -3,6 +3,7 @@ import { activeStops } from './content/stops'
 import { useI18n } from './i18n'
 import { canRender3D, currentEnv, detectQuality, type Quality } from './lib/capabilities'
 import { useRoute } from './lib/route'
+import { ProjectOverlay } from './overlay/ProjectOverlay'
 import { RecruiterMode } from './recruiter/RecruiterMode'
 import { Brand, Loader, Minimap, ProjectCard, Quote, TopBar, WalkControl } from './ui/components'
 import './ui/ui.css'
@@ -13,6 +14,9 @@ const StreetCanvas = lazy(() => import('./world/StreetCanvas'))
 
 // Solo en desarrollo: ?static pinta la escena como imagen para revisar la interfaz sin WebGL.
 const STATIC_PREVIEW = import.meta.env.DEV && new URLSearchParams(window.location.search).has('static')
+
+// React 18 no tipa `inert`; se pasa como atributo HTML para que la calle no reciba foco con un proyecto abierto.
+const INERT = { inert: '', 'aria-hidden': true } as Record<string, unknown>
 
 export interface AppProps {
   /** Para tests: fuerza el entorno en vez de detectarlo. */
@@ -36,7 +40,12 @@ export default function App({ env }: AppProps) {
 
   const [walk, dispatchRaw] = useReducer(
     (s: WalkState, a: WalkAction) => walkReducer(s, a, stops.length),
-    { index: 0, phase: 'idle' },
+    undefined,
+    (): WalkState => {
+      // Con un enlace directo a un proyecto, la calle empieza en su parada.
+      const i = route.view === 'project' ? stops.findIndex((s) => s.id === route.id) : 0
+      return { index: Math.max(0, i), phase: 'idle' }
+    },
   )
   const dispatch = useCallback((a: WalkAction) => dispatchRaw(a), [])
   const onStreet = route.view === 'street'
@@ -46,6 +55,7 @@ export default function App({ env }: AppProps) {
   const stop = stops[walk.index]
   const onReady = useCallback(() => setReady(true), [])
   const toRecruiter = useCallback(() => go({ view: 'recruiter' }), [go])
+  const closeProject = useCallback(() => go({ view: 'street' }), [go])
 
   if (!can3D || route.view === 'recruiter') {
     return <RecruiterMode stops={stops} canWalk={can3D} />
@@ -74,8 +84,8 @@ export default function App({ env }: AppProps) {
 
       {!ready && <Loader progress={progress} onSkip={toRecruiter} />}
 
-      {ready && onStreet && (
-        <div className="hud">
+      {ready && (
+        <div className="hud" {...(onStreet ? {} : INERT)}>
           <Brand />
           <TopBar />
           {walk.phase === 'idle' && (
@@ -91,6 +101,8 @@ export default function App({ env }: AppProps) {
           <Quote />
         </div>
       )}
+
+      {route.view === 'project' && <ProjectOverlay id={route.id} onClose={closeProject} />}
     </>
   )
 }
