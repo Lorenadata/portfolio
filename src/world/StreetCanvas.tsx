@@ -7,14 +7,14 @@ import type { SceneId, Stop } from '../content/stops'
 import type { StopId } from '../content/stopIds'
 import type { Quality } from '../lib/capabilities'
 import { DepthScene, type DepthSceneHandle } from './DepthScene'
-import { coverDistance, PLANE_H, PLANE_W } from './geometry'
+import { focusFor, PLANE_H, PLANE_W } from './geometry'
 import { Rain } from './Rain'
 import { SCENES, sceneById, sceneUrls } from './scenes'
 import type { WalkState } from './walk'
 
 const FOV = 50
 const TRANSITION_S = 1.6
-const PAN_S = 0.7
+const PAN_MAX_S = 1.5
 
 interface Props {
   walk: WalkState
@@ -38,7 +38,7 @@ function Street({ walk, stops, quality, signText, onArrived, onReady, onProgress
   const sceneId = stop.sceneId
   const [shown, setShown] = useState<{ current: SceneId; leaving: SceneId | null }>({ current: sceneId, leaving: null })
   const refs = useRef<Partial<Record<SceneId, DepthSceneHandle | null>>>({})
-  const anim = useRef({ t: 0, panT: 0, panX: 0, panFrom: 0, panTo: 0, panning: false })
+  const anim = useRef({ t: 0, panning: false, panT: 0 })
   const segments: [number, number] = quality === 'high' ? [256, 144] : [128, 72]
 
   // Precarga del resto de escenas cuando la primera ya está en pantalla.
@@ -56,20 +56,19 @@ function Street({ walk, stops, quality, signText, onArrived, onReady, onProgress
       setShown({ current: sceneId, leaving: shown.current })
       anim.current.t = 0
     } else {
-      const anchor = sceneById(sceneId).signs.find((a) => a.stopId === stop.id)
-      const a = anim.current
-      a.panFrom = a.panX
-      a.panTo = anchor ? (anchor.u - 0.5) * PLANE_W * 0.3 : 0
-      a.panT = 0
-      a.panning = true
+      anim.current.panning = true
+      anim.current.panT = 0
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [walk.index, walk.phase])
 
+  // Encuadre de la parada actual: la cámara se acerca a su escaparate.
+  const planeW = mobile ? PLANE_W * 0.56 : PLANE_W
+  const anchor = sceneById(sceneId).signs.find((a) => a.stopId === stop.id)
+  const focus = focusFor(anchor, size.width / size.height, planeW, PLANE_H, FOV)
+
   useFrame((_, dt) => {
     const a = anim.current
-    const base = coverDistance(size.width / size.height, mobile ? PLANE_W * 0.56 : PLANE_W, PLANE_H, FOV) * 0.9
-
     if (shown.leaving) {
       a.t = Math.min(1, a.t + dt / TRANSITION_S)
       const e = ease(a.t)
@@ -84,27 +83,26 @@ function Street({ walk, stops, quality, signText, onArrived, onReady, onProgress
         inc.setOpacity(e)
       }
       if (a.t >= 1) {
-        const anchor = sceneById(shown.current).signs.find((s) => s.stopId === stop.id)
-        a.panX = anchor ? (anchor.u - 0.5) * PLANE_W * 0.3 : 0
         setShown({ current: shown.current, leaving: null })
-        onArrived()
-      }
-    } else if (a.panning) {
-      a.panT = Math.min(1, a.panT + dt / PAN_S)
-      a.panX = a.panFrom + (a.panTo - a.panFrom) * ease(a.panT)
-      if (a.panT >= 1) {
-        a.panning = false
         onArrived()
       }
     }
 
-    // Paralaje con el ratón: la cámara se asoma un poco, la imagen se mueve en 3D.
-    const tx = a.panX + pointer.x * 0.45
-    const ty = pointer.y * 0.25
-    camera.position.x += (tx - camera.position.x) * 0.06
-    camera.position.y += (ty - camera.position.y) * 0.06
-    camera.position.z = base
-    camera.lookAt(a.panX * 0.6, 0, 0)
+    // La cámara viaja suavemente hacia el escaparate, con un poco de paralaje al mover el ratón.
+    const k = 1 - Math.exp(-dt * 3.2)
+    const tx = focus.x + pointer.x * 0.45
+    const ty = focus.y + pointer.y * 0.25
+    camera.position.x += (tx - camera.position.x) * k
+    camera.position.y += (ty - camera.position.y) * k
+    camera.position.z += (focus.z - camera.position.z) * k
+    camera.lookAt(camera.position.x - pointer.x * 0.2, camera.position.y - pointer.y * 0.1, 0)
+
+    // Paso dentro de la misma foto: llega cuando la cámara alcanza el nuevo encuadre.
+    if (a.panning) a.panT += dt
+    if (a.panning && ((Math.abs(camera.position.x - tx) < 0.06 && Math.abs(camera.position.z - focus.z) < 0.06) || a.panT > PAN_MAX_S)) {
+      a.panning = false
+      onArrived()
+    }
   })
 
   const rendered = [shown.current, ...(shown.leaving ? [shown.leaving] : [])]

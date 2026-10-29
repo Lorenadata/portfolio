@@ -8,9 +8,9 @@ import Project from './index'
 afterEach(cleanup)
 
 describe('parsePrompts', () => {
-  it('saca los 6 prompts del documento real, en orden', () => {
+  it('saca los 9 prompts del documento real, en orden', () => {
     const ps = parsePrompts(md)
-    expect(ps.map((p) => p.id)).toEqual(['llegada', 'escuela-taxis', 'alquiler-gestoria', 'facultad-taller', 'plaza-buzon', 'interior'])
+    expect(ps.map((p) => p.id)).toEqual(['llegada', 'escuela-taxis', 'alquiler-gestoria', 'facultad-taller', 'plaza-buzon', 'interior', 'taxis', 'gestoria', 'taller'])
   })
   it('cada prompt prohíbe texto legible e interfaz', () => {
     for (const p of parsePrompts(md)) {

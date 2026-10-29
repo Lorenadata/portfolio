@@ -54,4 +54,22 @@ Lorena: son 6 imágenes. Cinco son tramos de la misma calle y la sexta es un int
 
 ---
 
+## Tres imágenes más: un escaparate propio por proyecto
+
+Para que no se repita la vista de la calle, estas tres **no miran calle abajo**: cada una es **un único negocio visto de cerca**, con su propio encuadre. Súbelas en el mismo chat (con la referencia) y guárdalas con estos nombres en la misma carpeta que las demás.
+
+## 7 · `taxis`: la parada de taxis (Ride-sharing)
+
+> Photorealistic night photograph in an invented downtown inspired by Manhattan, just after rain: wet pavement with colourful reflections, light mist, warm golden light, cinematic rich colour, sharp details. Shot from across the road, almost straight on, 28 mm lens at eye level: a **taxi rank** under a modern glass-and-steel canopy fills the centre of the frame. Two yellow taxis are parked under it, doors closed, headlights on, rain dripping from the canopy edge. A large **blank illuminated sign box** hangs from the canopy (no text). Behind, a glass office lobby with warm light; a dispatcher kiosk with a glowing blank screen on one side. No skyline, no Empire State Building and no long street perspective: the canopy and the cars are the subject. All signs, screens and number plates are blank, with absolutely no readable text, letters, numbers or logos anywhere. No user-interface elements or overlays: a clean photograph only. Keep the canopy and its sign inside the central 56 % of the width. 16:9 landscape, highest resolution.
+
+## 8 · `gestoria`: la gestoría (Fiscalis)
+
+> Photorealistic night photograph in an invented downtown inspired by Manhattan, just after rain: wet pavement with reflections, light mist, warm golden light, cinematic rich colour, sharp details. **Close, frontal view** of the shop front of a refined, old-fashioned **accounting office** on a street corner, 35 mm lens at eye level: dark green painted wooden frame, large window revealing wooden desks with green banker's lamps, tidy binders on shelves, a calculator and paper ledgers. Above the window, a wide **blank brass-framed sign panel** (no text). A potted bay tree by the door and a single lamp post on the wet pavement. No skyline, no Empire State Building, no taxis and no long street perspective: the shop front is the subject. Absolutely no readable text, letters, numbers or logos anywhere. No user-interface elements or overlays: a clean photograph only. Keep the sign panel and the door inside the central 56 % of the width. 16:9 landscape, highest resolution.
+
+## 9 · `taller`: el taller (Cómo se hizo esta web)
+
+> Photorealistic night photograph in an invented downtown inspired by Manhattan, just after rain: wet pavement with reflections, light mist, cinematic rich colour, sharp details. **Three-quarter view** of a converted brick warehouse turned into a **design and engineering studio**, 28 mm lens at eye level: tall industrial steel windows glowing from inside, showing large desks, several monitors with abstract colourful shapes, sketches and wireframes pinned on a wall, a 3D printer with a warm light, a large plant. Above the steel door, a wide **blank black sign panel** (no text). Exposed brick, a bicycle leaning on the wall. No skyline, no Empire State Building, no taxis and no long street perspective: the studio is the subject. Absolutely no readable text, letters, numbers or logos on any screen, sign or paper. No user-interface elements or overlays: a clean photograph only. Keep the sign panel and the door inside the central 56 % of the width. 16:9 landscape, highest resolution.
+
+---
+
 ¿Dudas o una imagen que no hay forma de sacar bien? Pásamela tal cual y te preparo un prompt corregido.

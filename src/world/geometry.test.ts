@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest'
-import { anchorToWorld, coverDistance, PLANE_W, PLANE_H } from './geometry'
+import { anchorToWorld, coverDistance, focusFor, PLANE_W, PLANE_H } from './geometry'
 
 const flat = (d: number) => () => d
 
@@ -28,4 +28,31 @@ describe('coverDistance', () => {
     const d = coverDistance(9 / 19.5, PLANE_W * 0.56, PLANE_H, 50)
     expect(2 * d * Math.tan((25 * Math.PI) / 180)).toBeLessThanOrEqual(PLANE_H + 1e-9)
   })
+})
+
+describe('focusFor', () => {
+  const izq = { stopId: 'pobreza' as const, u: 0.3, v: 0.37, width: 1.6, rotY: 0.35 }
+  const der = { stopId: 'ridesharing' as const, u: 0.86, v: 0.335, width: 1.8, rotY: -0.35 }
+  const base = coverDistance(16 / 9, PLANE_W, PLANE_H, 50) * 0.9
+
+  it('se acerca a la fachada: la cámara queda más cerca que la vista general', () =>
+    expect(focusFor(izq, 16 / 9, PLANE_W, PLANE_H, 50).z).toBeLessThan(base))
+
+  it('dos tiendas de la misma foto dan encuadres claramente distintos', () => {
+    const a = focusFor(izq, 16 / 9, PLANE_W, PLANE_H, 50)
+    const b = focusFor(der, 16 / 9, PLANE_W, PLANE_H, 50)
+    expect(b.x - a.x).toBeGreaterThan(2)
+  })
+
+  it('nunca enseña el borde de la foto (el encuadre cabe dentro del plano)', () => {
+    for (const aspect of [16 / 9, 21 / 9, 4 / 3]) {
+      const f = focusFor(der, aspect, PLANE_W, PLANE_H, 50)
+      const h = 2 * f.z * Math.tan((25 * Math.PI) / 180)
+      expect(Math.abs(f.x) + (h * aspect) / 2).toBeLessThanOrEqual(PLANE_W / 2 + 1e-6)
+      expect(Math.abs(f.y) + h / 2).toBeLessThanOrEqual(PLANE_H / 2 + 1e-6)
+    }
+  })
+
+  it('sin rótulo (parada sin anclaje) es la vista general centrada', () =>
+    expect(focusFor(undefined, 16 / 9, PLANE_W, PLANE_H, 50)).toEqual({ x: 0, y: 0, z: base }))
 })
