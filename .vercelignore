@@ -1,0 +1,5 @@
+.superpowers
+docs/superpowers
+tools/depth/.venv
+node_modules
+dist
