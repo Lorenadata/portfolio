@@ -1,0 +1,18 @@
+.aq-pair { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; }
+.aq-group { padding: 20px; border-radius: 12px; background: rgba(255,255,255,.03); border: 1px solid rgba(255,255,255,.08); }
+.aq-group:first-child { border-color: color-mix(in srgb, var(--neon) 55%, transparent); }
+.aq-group h3 { margin: 0 0 4px; font-family: var(--serif); font-size: 22px; }
+.aq-share { margin: 0 0 12px; font-size: 13px; color: var(--ink-dim); }
+.aq-class { margin: 0 0 16px; font-size: 14px; }
+.aq-class strong { display: block; font-family: var(--serif); font-size: 38px; color: var(--neon); }
+.aq-group:last-child .aq-class strong { color: var(--ink); }
+.aq-bars { display: grid; gap: 8px; margin-bottom: 14px; }
+.aq-bar { display: grid; grid-template-columns: 34px 1fr 82px; gap: 8px; align-items: center; font-size: 13px; }
+.aq-bar__k { color: var(--ink-dim); }
+.aq-bar__track { height: 8px; border-radius: 4px; background: rgba(245,243,238,.1); overflow: hidden; }
+.aq-bar__track span { display: block; height: 100%; background: var(--neon); transition: width .5s ease; }
+.aq-group:last-child .aq-bar__track span { background: rgba(245,243,238,.55); }
+.aq-bar__v { text-align: right; font-variant-numeric: tabular-nums; }
+.aq-ratio { margin: 0; font-size: 12px; color: var(--ink-dim); }
+.aq-ratio strong { font-size: 20px; color: var(--ink); margin-right: 6px; }
+@media (max-width: 760px) { .aq-pair { grid-template-columns: 1fr; } }

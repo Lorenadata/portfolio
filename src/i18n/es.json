@@ -128,5 +128,18 @@
   "rs.step.outliers_lof.why": "Local Outlier Factor sobre los 93.000 viajes completados (k = log n). Solo 1 registro supera 1,5 y ninguno llega a 2: los datos son llamativamente regulares.",
   "rs.cloud": "93.000 viajes completados proyectados en sus tres primeras componentes principales (muestra de 3.000 puntos). Arrastra para girar.",
   "rs.cloud2d": "93.000 viajes completados sobre sus dos primeras componentes principales (muestra de 3.000 puntos).",
-  "rs.outlier": "Outlier LOF"
+  "rs.outlier": "Outlier LOF",
+  "aq.intro": "Las dos caras del mismo mercado, con microdatos oficiales de la ECV 2024: quien paga un alquiler y quien lo cobra. Renta equivalente, ponderada a toda la población.",
+  "aq.view": "Comparar",
+  "aq.view.inquilinos": "Inquilinos frente al resto",
+  "aq.view.caseros": "Caseros frente al resto",
+  "aq.g.inquilinos": "Inquilinos",
+  "aq.g.no_inquilinos": "No inquilinos",
+  "aq.g.caseros": "Caseros (cobran alquiler)",
+  "aq.g.no_caseros": "Sin rentas de alquiler",
+  "aq.share": "de la población",
+  "aq.baja": "renta baja (< 75 % de la mediana)",
+  "aq.alta": "renta alta (> 200 % de la mediana)",
+  "aq.ratio": "Ratio P90/P10: cuánta desigualdad hay dentro del grupo",
+  "aq.median": "Mediana nacional de la renta equivalente: "
 }

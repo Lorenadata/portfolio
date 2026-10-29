@@ -128,5 +128,18 @@
   "rs.step.outliers_lof.why": "Local Outlier Factor on the 93,000 completed rides (k = log n). Only 1 record scores above 1.5 and none above 2: the data is remarkably regular.",
   "rs.cloud": "93,000 completed rides projected on their first three principal components (3,000-point sample). Drag to rotate.",
   "rs.cloud2d": "93,000 completed rides on their first two principal components (3,000-point sample).",
-  "rs.outlier": "LOF outlier"
+  "rs.outlier": "LOF outlier",
+  "aq.intro": "Two sides of the same market, from official ECV 2024 microdata: people who rent and people who earn rent. Equivalised income, weighted to the whole population.",
+  "aq.view": "Compare",
+  "aq.view.inquilinos": "Tenants vs everyone else",
+  "aq.view.caseros": "Landlords vs everyone else",
+  "aq.g.inquilinos": "Tenants",
+  "aq.g.no_inquilinos": "Non-tenants",
+  "aq.g.caseros": "Landlords (rental income)",
+  "aq.g.no_caseros": "No rental income",
+  "aq.share": "of the population",
+  "aq.baja": "low income (< 75% of median)",
+  "aq.alta": "high income (> 200% of median)",
+  "aq.ratio": "P90/P10 ratio: how unequal the group is inside",
+  "aq.median": "National median equivalised income: "
 }
