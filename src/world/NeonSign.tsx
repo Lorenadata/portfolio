@@ -2,6 +2,7 @@ import { useRef } from 'react'
 import { useFrame } from '@react-three/fiber'
 import { Text } from '@react-three/drei'
 import * as THREE from 'three'
+import { applyNeon, type NeonText } from './neon'
 
 const FONT = '/fonts/cormorant-garamond-latin-600-normal.woff'
 
@@ -41,9 +42,7 @@ export function NeonSign({ text, color, position, width, rotY, lit, focused }: P
       if (focused) target *= 1.6
     }
     s.level += (target - s.level) * 0.25
-    const mat = mesh.material as THREE.MeshBasicMaterial
-    mat.opacity = Math.min(1, s.level)
-    mat.color.set(color).multiplyScalar(0.6 + s.level * 1.4)
+    applyNeon(mesh as unknown as NeonText, color, s.level)
   })
 
   return (

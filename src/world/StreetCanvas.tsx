@@ -9,6 +9,9 @@ import type { Quality } from '../lib/capabilities'
 import { DepthScene, type DepthSceneHandle } from './DepthScene'
 import { coverDistance, PLANE_H, PLANE_W } from './geometry'
 import { Rain } from './Rain'
+import { DebugPanel } from './DebugPanel'
+
+const DEBUG = import.meta.env.DEV && new URLSearchParams(window.location.search).has('debug')
 import { SCENES, sceneById, sceneUrls } from './scenes'
 import type { WalkState } from './walk'
 
@@ -154,6 +157,7 @@ export default function StreetCanvas(props: Props) {
       <color attach="background" args={['#05070c']} />
       <Street {...props} />
       <Rain count={quality === 'high' ? 2000 : 0} />
+      {DEBUG && <DebugPanel />}
       {quality === 'high' && (
         <EffectComposer>
           <Bloom intensity={0.9} luminanceThreshold={0.55} luminanceSmoothing={0.2} mipmapBlur />
