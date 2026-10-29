@@ -114,5 +114,19 @@
   "rt.side.p1": "La búsqueda en el mapa se hace en la base de datos con geometrías PostGIS.",
   "rt.side.p2": "Los webhooks de Stripe son idempotentes: un evento repetido no inscribe ni devuelve dos veces.",
   "rt.side.p3": "Los pagos se reparten entre la plataforma y cada organizador con Stripe Connect.",
-  "rt.side.code": "Resumen del proyecto en GitHub"
+  "rt.side.code": "Resumen del proyecto en GitHub",
+  "rs.intro": "150.000 reservas de viajes compartidos, tal cual salen de una exportación en bruto. Activa cada paso de limpieza: no se borra nada, cada problema se marca para que quien use los datos decida.",
+  "rs.kept": "filas conservadas",
+  "rs.flagged": "filas marcadas",
+  "rs.step.nulos": "Medidas faltantes",
+  "rs.step.nulos.why": "El viaje no llegó a hacerse (cancelado o sin conductor), así que no hay precio, distancia ni valoración. Es un faltante estructural (MNAR): no se imputa.",
+  "rs.step.duplicados": "IDs de reserva duplicados",
+  "rs.step.duplicados.why": "1.224 IDs aparecen más de una vez con datos totalmente distintos: un fallo al generar los identificadores. Se marcan, no se borran.",
+  "rs.step.outliers_iqr": "Outliers univariantes (IQR)",
+  "rs.step.outliers_iqr.why": "Valores fuera de las vallas de Tukey (1,5 × IQR) en al menos una medida: precio, distancia, tiempos o valoraciones.",
+  "rs.step.outliers_lof": "Outliers multivariantes (LOF)",
+  "rs.step.outliers_lof.why": "Local Outlier Factor sobre los 93.000 viajes completados (k = log n). Solo 1 registro supera 1,5 y ninguno llega a 2: los datos son llamativamente regulares.",
+  "rs.cloud": "93.000 viajes completados proyectados en sus tres primeras componentes principales (muestra de 3.000 puntos). Arrastra para girar.",
+  "rs.cloud2d": "93.000 viajes completados sobre sus dos primeras componentes principales (muestra de 3.000 puntos).",
+  "rs.outlier": "Outlier LOF"
 }
