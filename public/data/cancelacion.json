@@ -1,0 +1,439 @@
+{
+  "prevalencia": 0.0703043303391876,
+  "metricas": {
+    "base": {
+      "pr_auc": 0.0704620804386427
+    },
+    "logistica": {
+      "pr_auc": 0.0724681152609559,
+      "roc_auc": 0.508274232068543
+    },
+    "xgboost": {
+      "pr_auc": 0.0712935976028834,
+      "roc_auc": 0.502187094933787,
+      "umbral": 0.06,
+      "precision": 0.0702730302053101,
+      "recall": 0.997330282227307
+    }
+  },
+  "asignacion": {
+    "base": {
+      "pr_auc": 0.0754395863119042
+    },
+    "logistica": {
+      "pr_auc": 0.461554816321756,
+      "roc_auc": 0.770164589976688
+    },
+    "xgboost": {
+      "pr_auc": 0.483935421262851,
+      "roc_auc": 0.77264980757418,
+      "umbral": 0.63,
+      "precision": 0.996728462377317,
+      "recall": 0.348588863463005
+    },
+    "prevalencia": 0.0754901678518988
+  },
+  "celdas": [
+    {
+      "vehicle_type": "Auto",
+      "franja": "madrugada",
+      "finde": 0,
+      "prob_media": 0.07,
+      "n": 389
+    },
+    {
+      "vehicle_type": "Bike",
+      "franja": "madrugada",
+      "finde": 0,
+      "prob_media": 0.0699,
+      "n": 256
+    },
+    {
+      "vehicle_type": "eBike",
+      "franja": "madrugada",
+      "finde": 0,
+      "prob_media": 0.0699,
+      "n": 115
+    },
+    {
+      "vehicle_type": "Go Mini",
+      "franja": "madrugada",
+      "finde": 0,
+      "prob_media": 0.07,
+      "n": 351
+    },
+    {
+      "vehicle_type": "Go Sedan",
+      "franja": "madrugada",
+      "finde": 0,
+      "prob_media": 0.0703,
+      "n": 343
+    },
+    {
+      "vehicle_type": "Premier Sedan",
+      "franja": "madrugada",
+      "finde": 0,
+      "prob_media": 0.0701,
+      "n": 200
+    },
+    {
+      "vehicle_type": "Auto",
+      "franja": "manana",
+      "finde": 0,
+      "prob_media": 0.0698,
+      "n": 1836
+    },
+    {
+      "vehicle_type": "Bike",
+      "franja": "manana",
+      "finde": 0,
+      "prob_media": 0.0698,
+      "n": 1081
+    },
+    {
+      "vehicle_type": "eBike",
+      "franja": "manana",
+      "finde": 0,
+      "prob_media": 0.0698,
+      "n": 536
+    },
+    {
+      "vehicle_type": "Go Mini",
+      "franja": "manana",
+      "finde": 0,
+      "prob_media": 0.0698,
+      "n": 1539
+    },
+    {
+      "vehicle_type": "Go Sedan",
+      "franja": "manana",
+      "finde": 0,
+      "prob_media": 0.0699,
+      "n": 1408
+    },
+    {
+      "vehicle_type": "Premier Sedan",
+      "franja": "manana",
+      "finde": 0,
+      "prob_media": 0.07,
+      "n": 872
+    },
+    {
+      "vehicle_type": "Uber XL",
+      "franja": "manana",
+      "finde": 0,
+      "prob_media": 0.07,
+      "n": 207
+    },
+    {
+      "vehicle_type": "Auto",
+      "franja": "tarde",
+      "finde": 0,
+      "prob_media": 0.0699,
+      "n": 2171
+    },
+    {
+      "vehicle_type": "Bike",
+      "franja": "tarde",
+      "finde": 0,
+      "prob_media": 0.0699,
+      "n": 1269
+    },
+    {
+      "vehicle_type": "eBike",
+      "franja": "tarde",
+      "finde": 0,
+      "prob_media": 0.0699,
+      "n": 604
+    },
+    {
+      "vehicle_type": "Go Mini",
+      "franja": "tarde",
+      "finde": 0,
+      "prob_media": 0.0699,
+      "n": 1731
+    },
+    {
+      "vehicle_type": "Go Sedan",
+      "franja": "tarde",
+      "finde": 0,
+      "prob_media": 0.0699,
+      "n": 1512
+    },
+    {
+      "vehicle_type": "Premier Sedan",
+      "franja": "tarde",
+      "finde": 0,
+      "prob_media": 0.0699,
+      "n": 1077
+    },
+    {
+      "vehicle_type": "Uber XL",
+      "franja": "tarde",
+      "finde": 0,
+      "prob_media": 0.07,
+      "n": 258
+    },
+    {
+      "vehicle_type": "Auto",
+      "franja": "noche",
+      "finde": 0,
+      "prob_media": 0.0699,
+      "n": 2132
+    },
+    {
+      "vehicle_type": "Bike",
+      "franja": "noche",
+      "finde": 0,
+      "prob_media": 0.07,
+      "n": 1251
+    },
+    {
+      "vehicle_type": "eBike",
+      "franja": "noche",
+      "finde": 0,
+      "prob_media": 0.0699,
+      "n": 607
+    },
+    {
+      "vehicle_type": "Go Mini",
+      "franja": "noche",
+      "finde": 0,
+      "prob_media": 0.0699,
+      "n": 1762
+    },
+    {
+      "vehicle_type": "Go Sedan",
+      "franja": "noche",
+      "finde": 0,
+      "prob_media": 0.0699,
+      "n": 1595
+    },
+    {
+      "vehicle_type": "Premier Sedan",
+      "franja": "noche",
+      "finde": 0,
+      "prob_media": 0.0699,
+      "n": 1038
+    },
+    {
+      "vehicle_type": "Uber XL",
+      "franja": "noche",
+      "finde": 0,
+      "prob_media": 0.0699,
+      "n": 305
+    },
+    {
+      "vehicle_type": "Auto",
+      "franja": "madrugada",
+      "finde": 1,
+      "prob_media": 0.07,
+      "n": 171
+    },
+    {
+      "vehicle_type": "Bike",
+      "franja": "madrugada",
+      "finde": 1,
+      "prob_media": 0.0702,
+      "n": 103
+    },
+    {
+      "vehicle_type": "Go Mini",
+      "franja": "madrugada",
+      "finde": 1,
+      "prob_media": 0.07,
+      "n": 141
+    },
+    {
+      "vehicle_type": "Go Sedan",
+      "franja": "madrugada",
+      "finde": 1,
+      "prob_media": 0.0701,
+      "n": 107
+    },
+    {
+      "vehicle_type": "Auto",
+      "franja": "manana",
+      "finde": 1,
+      "prob_media": 0.0699,
+      "n": 771
+    },
+    {
+      "vehicle_type": "Bike",
+      "franja": "manana",
+      "finde": 1,
+      "prob_media": 0.0698,
+      "n": 473
+    },
+    {
+      "vehicle_type": "eBike",
+      "franja": "manana",
+      "finde": 1,
+      "prob_media": 0.0697,
+      "n": 198
+    },
+    {
+      "vehicle_type": "Go Mini",
+      "franja": "manana",
+      "finde": 1,
+      "prob_media": 0.07,
+      "n": 612
+    },
+    {
+      "vehicle_type": "Go Sedan",
+      "franja": "manana",
+      "finde": 1,
+      "prob_media": 0.07,
+      "n": 565
+    },
+    {
+      "vehicle_type": "Premier Sedan",
+      "franja": "manana",
+      "finde": 1,
+      "prob_media": 0.0702,
+      "n": 373
+    },
+    {
+      "vehicle_type": "Auto",
+      "franja": "tarde",
+      "finde": 1,
+      "prob_media": 0.0699,
+      "n": 924
+    },
+    {
+      "vehicle_type": "Bike",
+      "franja": "tarde",
+      "finde": 1,
+      "prob_media": 0.07,
+      "n": 519
+    },
+    {
+      "vehicle_type": "eBike",
+      "franja": "tarde",
+      "finde": 1,
+      "prob_media": 0.07,
+      "n": 270
+    },
+    {
+      "vehicle_type": "Go Mini",
+      "franja": "tarde",
+      "finde": 1,
+      "prob_media": 0.07,
+      "n": 727
+    },
+    {
+      "vehicle_type": "Go Sedan",
+      "franja": "tarde",
+      "finde": 1,
+      "prob_media": 0.07,
+      "n": 614
+    },
+    {
+      "vehicle_type": "Premier Sedan",
+      "franja": "tarde",
+      "finde": 1,
+      "prob_media": 0.0699,
+      "n": 415
+    },
+    {
+      "vehicle_type": "Uber XL",
+      "franja": "tarde",
+      "finde": 1,
+      "prob_media": 0.07,
+      "n": 104
+    },
+    {
+      "vehicle_type": "Auto",
+      "franja": "noche",
+      "finde": 1,
+      "prob_media": 0.0699,
+      "n": 862
+    },
+    {
+      "vehicle_type": "Bike",
+      "franja": "noche",
+      "finde": 1,
+      "prob_media": 0.0698,
+      "n": 504
+    },
+    {
+      "vehicle_type": "eBike",
+      "franja": "noche",
+      "finde": 1,
+      "prob_media": 0.0699,
+      "n": 235
+    },
+    {
+      "vehicle_type": "Go Mini",
+      "franja": "noche",
+      "finde": 1,
+      "prob_media": 0.0699,
+      "n": 723
+    },
+    {
+      "vehicle_type": "Go Sedan",
+      "franja": "noche",
+      "finde": 1,
+      "prob_media": 0.0699,
+      "n": 629
+    },
+    {
+      "vehicle_type": "Premier Sedan",
+      "franja": "noche",
+      "finde": 1,
+      "prob_media": 0.0699,
+      "n": 403
+    },
+    {
+      "vehicle_type": "Uber XL",
+      "franja": "noche",
+      "finde": 1,
+      "prob_media": 0.0704,
+      "n": 100
+    }
+  ],
+  "importancia": [
+    {
+      "variable": "drop_location",
+      "gain": 0.3674
+    },
+    {
+      "variable": "pickup_location",
+      "gain": 0.2591
+    },
+    {
+      "variable": "hora",
+      "gain": 0.1405
+    },
+    {
+      "variable": "dia_semana",
+      "gain": 0.1037
+    },
+    {
+      "variable": "vehicle_type",
+      "gain": 0.0923
+    }
+  ],
+  "importancia_asignacion": [
+    {
+      "variable": "avg_vtat",
+      "gain": 0.9884
+    },
+    {
+      "variable": "pickup_location",
+      "gain": 0.0049
+    },
+    {
+      "variable": "drop_location",
+      "gain": 0.0036
+    },
+    {
+      "variable": "dia_semana",
+      "gain": 0.0011
+    },
+    {
+      "variable": "hora",
+      "gain": 0.001
+    }
+  ]
+}

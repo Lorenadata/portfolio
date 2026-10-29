@@ -4,7 +4,10 @@ import { currentEnv, detectQuality, type Quality } from '../../lib/capabilities'
 import { formatInt } from '../../lib/format'
 import limpieza from '../../../public/data/limpieza.json'
 import lof from '../../../public/data/lof.json'
+import { Prediccion } from './Prediccion'
 import '../projects.css'
+import '../fiscalis/fiscalis.css'
+import '../racetrack/racetrack.css'
 import './ridesharing.css'
 
 const LofCloud3D = lazy(() => import('./LofCloud3D'))
@@ -83,6 +86,7 @@ export default function Project({ quality }: { quality?: Quality }) {
           )}
         </div>
       </div>
+      <Prediccion />
     </div>
   )
 }

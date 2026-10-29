@@ -1,8 +1,9 @@
 import { afterEach, describe, expect, it } from 'vitest'
-import { cleanup, fireEvent, screen } from '@testing-library/react'
+import { cleanup, fireEvent, screen, within } from '@testing-library/react'
 import { renderI18n } from '../../test/render'
 import Project from './index'
 import limpieza from '../../../public/data/limpieza.json'
+import cancelacion from '../../../public/data/cancelacion.json'
 
 afterEach(cleanup)
 
@@ -33,8 +34,21 @@ describe('parada Ride-sharing', () => {
     expect(screen.getByTestId('lof-2d')).toBeInTheDocument()
   })
 
-  it('no menciona ningún modelo predictivo todavía', () => {
-    const { container } = renderI18n(<Project quality="low" />)
-    expect(container.textContent).not.toMatch(/xgboost|predict|predic/i)
+  it('la predicción muestra la probabilidad de la combinación elegida, leída del modelo', () => {
+    renderI18n(<Project quality="low" />)
+    const box = screen.getByTestId('prediccion')
+    fireEvent.change(within(box).getByLabelText(/vehicle/i), { target: { value: 'Auto' } })
+    fireEvent.change(within(box).getByLabelText(/time of day/i), { target: { value: 'noche' } })
+    fireEvent.click(within(box).getByRole('checkbox', { name: /weekend/i }))
+    const celda = cancelacion.celdas.find((c) => c.vehicle_type === 'Auto' && c.franja === 'noche' && c.finde === 1)!
+    expect(within(box).getByTestId('prob')).toHaveTextContent((celda.prob_media * 100).toFixed(1))
+  })
+
+  it('las métricas son las reales del modelo, no números escritos a mano', () => {
+    renderI18n(<Project quality="low" />)
+    const box = screen.getByTestId('prediccion')
+    expect(within(box).getByText(cancelacion.metricas.xgboost.pr_auc.toFixed(3))).toBeInTheDocument()
+    expect(within(box).getByText(cancelacion.metricas.base.pr_auc.toFixed(3))).toBeInTheDocument()
+    expect(within(box).getByText(cancelacion.asignacion.xgboost.pr_auc.toFixed(3))).toBeInTheDocument()
   })
 })

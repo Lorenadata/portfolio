@@ -16,3 +16,16 @@
 .rs-out { fill: #fb923c; stroke: #fff; stroke-width: .4; }
 .rs-cloud figcaption { margin-top: 8px; font-size: 12px; color: var(--ink-dim); }
 .rs-legend { color: #fb923c; margin-left: 6px; }
+.rs-pred { display: grid; gap: 14px; padding-top: 22px; border-top: 1px solid rgba(255,255,255,.08); }
+.rs-pred__lead { margin: 0; color: var(--ink-dim); line-height: 1.5; max-width: 760px; }
+.rs-pred__grid { display: grid; grid-template-columns: minmax(240px, 1fr) minmax(240px, 1fr); gap: 22px; align-items: start; }
+.rs-pred__base { margin: 6px 0 0; font-size: 13px; color: var(--ink-dim); }
+.rs-check { display: flex !important; align-items: center; gap: 10px; color: var(--ink) !important; }
+.rs-metrics { max-width: 620px; color: var(--ink); }
+.rs-metrics th { color: var(--ink-dim); }
+.rs-metrics td, .rs-metrics th { border-bottom-color: rgba(255,255,255,.08); }
+.rs-metrics__b td { color: var(--ink-dim); font-style: italic; }
+.rs-pred__verdict { margin: 0; padding: 12px 16px; border-left: 3px solid var(--neon); line-height: 1.55; max-width: 760px; }
+.rs-pred .btn { justify-self: start; }
+@media (max-width: 760px) { .rs-pred__grid { grid-template-columns: 1fr; } }
+.rs-h { margin: 0; font-size: 11px; letter-spacing: .25em; text-transform: uppercase; color: var(--neon); font-weight: 500; }
