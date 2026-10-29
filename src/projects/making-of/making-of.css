@@ -1,0 +1,17 @@
+.mk-h { margin: 0 0 12px; font-size: 11px; letter-spacing: .25em; text-transform: uppercase; color: var(--neon); font-weight: 500; }
+.mk-steps { list-style: none; margin: 0; padding: 0; display: grid; gap: 14px; }
+.mk-steps li { display: grid; grid-template-columns: 36px 1fr; gap: 14px; align-items: start; }
+.mk-n { display: grid; place-items: center; width: 36px; height: 36px; border-radius: 50%; border: 1px solid var(--neon); color: var(--neon); font-family: var(--serif); font-size: 18px; }
+.mk-steps h4 { margin: 4px 0 4px; font-family: var(--serif); font-size: 20px; font-weight: 600; }
+.mk-steps p { margin: 0; line-height: 1.55; color: var(--ink); }
+.mk-split { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; }
+.mk-box { padding: 18px 20px; border-radius: 12px; background: rgba(255,255,255,.03); border: 1px solid rgba(255,255,255,.08); }
+.mk-box--me { border-color: color-mix(in srgb, var(--neon) 55%, transparent); }
+.mk-box ul { margin: 0; padding-left: 18px; display: grid; gap: 6px; line-height: 1.5; }
+.mk-lead { margin: 0 0 12px; color: var(--ink-dim); line-height: 1.5; }
+.mk-prompt { border-top: 1px solid rgba(255,255,255,.08); }
+.mk-prompt summary { padding: 12px 0; cursor: pointer; font-size: 15px; }
+.mk-prompt summary code { color: var(--neon); margin-right: 8px; }
+.mk-prompt blockquote { margin: 0 0 14px; padding: 12px 16px; border-left: 3px solid var(--neon); background: rgba(255,255,255,.03); font: 13px/1.6 ui-monospace, monospace; color: var(--ink-dim); }
+.mk-repo { justify-self: start; }
+@media (max-width: 760px) { .mk-split { grid-template-columns: 1fr; } }
