@@ -11,6 +11,8 @@
 }
 * { box-sizing: border-box; }
 html, body, #root { margin: 0; height: 100%; }
+/* Deslizar para caminar no debe recargar la página (pull-to-refresh en Android). */
+html, body { overscroll-behavior: none; }
 body { background: var(--night); color: var(--ink); font-family: var(--sans); -webkit-font-smoothing: antialiased; }
 a { color: inherit; }
 :focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }

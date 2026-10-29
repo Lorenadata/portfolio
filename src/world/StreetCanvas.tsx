@@ -10,10 +10,10 @@ import { DepthScene, type DepthSceneHandle } from './DepthScene'
 import { focusFor, PLANE_H, PLANE_W } from './geometry'
 import { Rain } from './Rain'
 import { SCENES, sceneById, sceneUrls } from './scenes'
+import { stepTransition } from './transition'
 import type { WalkState } from './walk'
 
 const FOV = 50
-const TRANSITION_S = 1.6
 const PAN_MAX_S = 1.5
 
 interface Props {
@@ -25,6 +25,8 @@ interface Props {
   onContextLost(): void
   onReady?(): void
   onProgress?(p: number): void
+  /** Con un proyecto abierto la calle no se ve: se deja de dibujar para no gastar batería. */
+  paused?: boolean
 }
 
 const ease = (t: number) => (t < 0.5 ? 4 * t * t * t : 1 - Math.pow(-2 * t + 2, 3) / 2)
@@ -70,10 +72,10 @@ function Street({ walk, stops, quality, signText, onArrived, onReady, onProgress
   useFrame((_, dt) => {
     const a = anim.current
     if (shown.leaving) {
-      a.t = Math.min(1, a.t + dt / TRANSITION_S)
-      const e = ease(a.t)
       const out = refs.current[shown.leaving]
       const inc = refs.current[shown.current]
+      a.t = stepTransition(a.t, dt, !!inc)
+      const e = ease(a.t)
       if (out) {
         out.group.position.z = e * 6
         out.setOpacity(1 - e)
@@ -131,7 +133,7 @@ function Street({ walk, stops, quality, signText, onArrived, onReady, onProgress
 }
 
 export default function StreetCanvas(props: Props) {
-  const { quality, onContextLost } = props
+  const { quality, onContextLost, paused } = props
   const lost = useRef(onContextLost)
   lost.current = onContextLost
   const dpr = useMemo<[number, number]>(() => (quality === 'high' ? [1, 2] : [1, 1.5]), [quality])
@@ -139,6 +141,7 @@ export default function StreetCanvas(props: Props) {
   return (
     <Canvas
       dpr={dpr}
+      frameloop={paused ? 'never' : 'always'}
       camera={{ fov: FOV, near: 0.1, far: 100, position: [0, 0, 10] }}
       gl={{ antialias: false, powerPreference: 'high-performance' }}
       onCreated={({ gl, scene, camera }) => {

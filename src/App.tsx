@@ -1,4 +1,4 @@
-import { lazy, Suspense, useCallback, useMemo, useReducer, useState } from 'react'
+import { lazy, Suspense, useCallback, useEffect, useMemo, useReducer, useRef, useState } from 'react'
 import { activeStops } from './content/stops'
 import { useI18n } from './i18n'
 import { canRender3D, currentEnv, detectQuality, type Quality } from './lib/capabilities'
@@ -6,6 +6,7 @@ import { useRoute } from './lib/route'
 import { ProjectOverlay } from './overlay/ProjectOverlay'
 import { RecruiterMode } from './recruiter/RecruiterMode'
 import { Brand, Loader, Minimap, ProjectCard, Quote, TopBar, WalkControl } from './ui/components'
+import { ErrorBoundary } from './ui/ErrorBoundary'
 import './ui/ui.css'
 import { walkReducer, type WalkAction, type WalkState } from './world/walk'
 import { useWalkInput } from './world/useWalkInput'
@@ -35,8 +36,12 @@ export default function App({ env }: AppProps) {
   const [route, go] = useRoute(ids)
   const [quality] = useState(initialQuality)
   const [can3D] = useState(() => canRender3D(env ?? currentEnv()))
+  // Si la calle 3D falla al cargar (imagen o código que no llega, WebGL que no arranca), se sigue sin ella.
+  const [streetFailed, setStreetFailed] = useState(false)
   const [ready, setReady] = useState(STATIC_PREVIEW)
   const [progress, setProgress] = useState(0)
+  // Botón que abrió el proyecto, recordado al pulsar: al volver inerte la interfaz el navegador puede quitarle el foco.
+  const opener = useRef<HTMLElement | null>(null)
 
   const [walk, dispatchRaw] = useReducer(
     (s: WalkState, a: WalkAction) => walkReducer(s, a, stops.length),
@@ -48,48 +53,76 @@ export default function App({ env }: AppProps) {
     },
   )
   const dispatch = useCallback((a: WalkAction) => dispatchRaw(a), [])
+  const street = can3D && !streetFailed
   const onStreet = route.view === 'street'
-  useWalkInput(dispatch, can3D && onStreet && ready)
+  useWalkInput(dispatch, street && onStreet && ready)
   if (STATIC_PREVIEW && walk.phase === 'moving') queueMicrotask(() => dispatch({ type: 'arrived' }))
 
   const stop = stops[walk.index]
   const onReady = useCallback(() => setReady(true), [])
   const toRecruiter = useCallback(() => go({ view: 'recruiter' }), [go])
-  const closeProject = useCallback(() => go({ view: 'street' }), [go])
+  const closeProject = useCallback(() => go({ view: street ? 'street' : 'recruiter' }), [go, street])
+  const onStreetError = useCallback(() => {
+    setStreetFailed(true)
+    toRecruiter()
+  }, [toRecruiter])
 
-  if (!can3D || route.view === 'recruiter') {
-    return <RecruiterMode stops={stops} canWalk={can3D} />
+  useEffect(() => {
+    if (route.view !== 'project') opener.current = null
+  }, [route.view])
+
+  const overlay = route.view === 'project' && (
+    <ProjectOverlay id={route.id} onClose={closeProject} returnFocus={opener.current} />
+  )
+
+  if (!street || route.view === 'recruiter') {
+    return (
+      <>
+        <div {...(route.view === 'project' ? INERT : {})}>
+          <RecruiterMode stops={stops} canWalk={street} />
+        </div>
+        {overlay}
+      </>
+    )
   }
 
   return (
     <>
-      <div className={route.view === 'project' ? 'street-blurred' : undefined}>
-        {STATIC_PREVIEW ? (
-          <img src={`/scenes/${stop.sceneId}/color.webp`} alt="" style={{ position: 'fixed', inset: 0, width: '100%', height: '100%', objectFit: 'cover' }} />
-        ) : (
-        <Suspense fallback={null}>
-          <StreetCanvas
-            walk={walk}
-            stops={stops}
-            quality={quality}
-            signText={(id) => t(`sign.${id}`)}
-            onArrived={() => dispatch({ type: 'arrived' })}
-            onContextLost={toRecruiter}
-            onReady={onReady}
-            onProgress={setProgress}
-          />
-        </Suspense>
-        )}
-      </div>
+      {STATIC_PREVIEW ? (
+        <img src={`/scenes/${stop.sceneId}/color.webp`} alt="" style={{ position: 'fixed', inset: 0, width: '100%', height: '100%', objectFit: 'cover' }} />
+      ) : (
+        <ErrorBoundary fallback={null} onError={onStreetError}>
+          <Suspense fallback={null}>
+            <StreetCanvas
+              walk={walk}
+              stops={stops}
+              quality={quality}
+              signText={(id) => t(`sign.${id}`)}
+              onArrived={() => dispatch({ type: 'arrived' })}
+              onContextLost={onStreetError}
+              onReady={onReady}
+              onProgress={setProgress}
+              paused={route.view === 'project'}
+            />
+          </Suspense>
+        </ErrorBoundary>
+      )}
 
       {!ready && <Loader progress={progress} onSkip={toRecruiter} />}
 
       {ready && (
-        <div className="hud" {...(onStreet ? {} : INERT)}>
+        <div className="hud street-hud" {...(onStreet ? {} : INERT)}>
           <Brand />
           <TopBar />
           {walk.phase === 'idle' && (
-            <ProjectCard key={stop.id} stop={stop} onEnter={() => go({ view: 'project', id: stop.id })} />
+            <ProjectCard
+              key={stop.id}
+              stop={stop}
+              onEnter={() => {
+                opener.current = document.activeElement as HTMLElement | null
+                go({ view: 'project', id: stop.id })
+              }}
+            />
           )}
           <Minimap stops={stops} current={walk.index} onGo={(i) => dispatch({ type: 'goto', index: i })} />
           <WalkControl
@@ -102,7 +135,7 @@ export default function App({ env }: AppProps) {
         </div>
       )}
 
-      {route.view === 'project' && <ProjectOverlay id={route.id} onClose={closeProject} />}
+      {overlay}
     </>
   )
 }

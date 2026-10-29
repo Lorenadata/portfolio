@@ -223,5 +223,7 @@
   "rs.pred.m.xgb": "XGBoost, al reservar",
   "rs.pred.m.xgbB": "XGBoost, con el tiempo de llegada",
   "rs.pred.verdict": "Cambia las opciones: la predicción apenas se mueve de la tasa base. Al reservar, ningún modelo supera al azar. Añadir el tiempo de llegada del vehículo parece impresionante, pero en este dataset sintético toda llegada de más de 15 minutos es una cancelación del cliente: el modelo aprende la regla del generador de datos, no el comportamiento humano.",
-  "rs.pred.report": "Leer el informe del modelo"
+  "rs.pred.report": "Leer el informe del modelo",
+  "overlay.error": "Este proyecto no ha podido cargarse. Revisa la conexión y vuelve a intentarlo.",
+  "overlay.retry": "Reintentar"
 }

@@ -1,6 +1,6 @@
 import { lazy, Suspense, useState } from 'react'
 import { useI18n } from '../../i18n'
-import { currentEnv, detectQuality, type Quality } from '../../lib/capabilities'
+import { canRender3D, currentEnv, detectQuality, type Quality } from '../../lib/capabilities'
 import { formatInt } from '../../lib/format'
 import limpieza from '../../../public/data/limpieza.json'
 import lof from '../../../public/data/lof.json'
@@ -40,7 +40,12 @@ function LofCloud2D() {
 export default function Project({ quality }: { quality?: Quality }) {
   const { t } = useI18n()
   const locale = t('fmt.locale')
-  const [q] = useState<Quality>(() => quality ?? detectQuality(currentEnv()))
+  // Sin WebGL o con movimiento reducido, la nube LOF se dibuja en 2D.
+  const [q] = useState<Quality>(() => {
+    if (quality) return quality
+    const env = currentEnv()
+    return canRender3D(env) ? detectQuality(env) : 'low'
+  })
   const [on, setOn] = useState(0) // cuántos pasos están activos, en orden
 
   return (

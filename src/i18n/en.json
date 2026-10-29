@@ -223,5 +223,7 @@
   "rs.pred.m.xgb": "XGBoost, at booking time",
   "rs.pred.m.xgbB": "XGBoost, with vehicle arrival time",
   "rs.pred.verdict": "Change the options: the prediction barely moves from the base rate. At booking time no model beats chance. Adding the vehicle arrival time looks impressive, but every arrival above 15 minutes in this synthetic dataset is a customer cancellation: the model learns the data generator's rule, not human behaviour.",
-  "rs.pred.report": "Read the model report"
+  "rs.pred.report": "Read the model report",
+  "overlay.error": "This project couldn't load. Check your connection and try again.",
+  "overlay.retry": "Try again"
 }

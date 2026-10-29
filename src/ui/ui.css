@@ -62,7 +62,8 @@
 .loader__bar { width: 220px; height: 2px; background: rgba(245,243,238,.15); overflow: hidden; }
 .loader__bar span { display: block; height: 100%; background: var(--accent); box-shadow: 0 0 10px var(--accent); transition: width .3s; }
 
-.street-blurred { filter: blur(10px) brightness(.55); transition: filter .4s; }
+.street-hud { touch-action: none; }
+.street-hud .card, .street-hud .minimap, .street-hud .topbar { touch-action: manipulation; }
 
 /* Móvil: barra compacta, tarjeta abajo a todo el ancho, minimapa fuera */
 @media (max-width: 760px) {

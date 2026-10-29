@@ -2,6 +2,7 @@ import { lazy, Suspense, useEffect, useRef, type ComponentType, type LazyExoticC
 import { STOPS } from '../content/stops'
 import type { StopId } from '../content/stopIds'
 import { useI18n } from '../i18n'
+import { ErrorBoundary } from '../ui/ErrorBoundary'
 import { useFocusTrap } from './useFocusTrap'
 import './overlay.css'
 
@@ -16,11 +17,11 @@ const PROJECTS: Record<StopId, LazyExoticComponent<ComponentType>> = {
   contact: lazy(() => import('../projects/contact')),
 }
 
-export function ProjectOverlay({ id, onClose }: { id: StopId; onClose(): void }) {
+export function ProjectOverlay({ id, onClose, returnFocus }: { id: StopId; onClose(): void; returnFocus?: HTMLElement | null }) {
   const { t } = useI18n()
   const root = useRef<HTMLDivElement>(null)
   const title = useRef<HTMLHeadingElement>(null)
-  useFocusTrap(root, onClose)
+  useFocusTrap(root, onClose, returnFocus)
   useEffect(() => title.current?.focus(), [id])
 
   const stop = STOPS.find((s) => s.id === id)!
@@ -41,9 +42,21 @@ export function ProjectOverlay({ id, onClose }: { id: StopId; onClose(): void })
           </button>
         </header>
         <div className="overlay__body">
-          <Suspense fallback={<p className="overlay__loading">…</p>}>
-            <Project />
-          </Suspense>
+          <ErrorBoundary
+            key={id}
+            fallback={
+              <div className="overlay__error" role="alert">
+                <p>{t('overlay.error')}</p>
+                {/* Un trozo de código que falla suele ser una versión antigua tras publicar: recargar lo arregla. */}
+                <button type="button" className="btn btn--primary" onClick={() => window.location.reload()}>{t('overlay.retry')}</button>
+                <button type="button" className="btn btn--ghost" onClick={onClose}>← {t('overlay.close')}</button>
+              </div>
+            }
+          >
+            <Suspense fallback={<p className="overlay__loading">…</p>}>
+              <Project />
+            </Suspense>
+          </ErrorBoundary>
         </div>
         {(stop.repo || stop.report) && (
           <footer className="overlay__footer">

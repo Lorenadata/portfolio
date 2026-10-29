@@ -11,3 +11,5 @@
 .overlay__footer { display: flex; gap: 20px; padding: 16px 28px 24px; font-size: 14px; }
 .overlay__footer a { color: var(--neon); }
 @media (max-width: 760px) { .overlay__header, .overlay__body, .overlay__footer { padding-left: 16px; padding-right: 16px; } }
+.overlay__error { display: grid; gap: 12px; justify-items: start; padding: 12px 0; }
+.overlay__error p { margin: 0; font-size: 16px; }

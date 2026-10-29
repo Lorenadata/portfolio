@@ -3,9 +3,10 @@ import { useEffect, type RefObject } from 'react'
 const FOCUSABLE = 'a[href], button:not([disabled]), input:not([disabled]), select:not([disabled]), textarea:not([disabled]), [tabindex]:not([tabindex="-1"])'
 
 /** Mantiene el foco dentro del contenedor, cierra con Escape y devuelve el foco a quien lo tenía al abrir. */
-export function useFocusTrap(ref: RefObject<HTMLElement>, onEscape: () => void) {
+/** returnTo: el elemento que abrió la capa, recordado al pulsar (el navegador puede haber movido ya el foco). */
+export function useFocusTrap(ref: RefObject<HTMLElement>, onEscape: () => void, returnTo?: HTMLElement | null) {
   useEffect(() => {
-    const opener = document.activeElement as HTMLElement | null
+    const opener = returnTo ?? (document.activeElement as HTMLElement | null)
     const onKey = (e: KeyboardEvent) => {
       const root = ref.current
       if (!root) return
@@ -34,5 +35,5 @@ export function useFocusTrap(ref: RefObject<HTMLElement>, onEscape: () => void) 
       document.removeEventListener('keydown', onKey)
       if (opener && document.contains(opener)) opener.focus()
     }
-  }, [ref, onEscape])
+  }, [ref, onEscape, returnTo])
 }

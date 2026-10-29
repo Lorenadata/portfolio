@@ -46,7 +46,7 @@ export function RecruiterMode({ stops, canWalk = true }: { stops: Stop[]; canWal
               <p className="rec__tagline">{t(`tagline.${s.id}`)}</p>
               <p className="rec__result">{t(`result.${s.id}`)}</p>
               <div className="rec__links">
-                {canWalk && <a href={`#/p/${s.id}`}>{t('card.enter')} →</a>}
+                <a href={`#/p/${s.id}`}>{t('card.enter')} →</a>
                 {s.repo && (
                   <a href={s.repo} target="_blank" rel="noreferrer">{t('recruiter.code')}</a>
                 )}
