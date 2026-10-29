@@ -10,35 +10,35 @@ export interface SceneDef {
   depthScale: number
 }
 
-// Anclajes provisionales sobre las imágenes de prueba (recortes de version1.png).
-// Se reajustan sobre las fachadas reales cuando lleguen las imágenes definitivas (Tarea 17).
+// Anclajes sobre los paneles en blanco de las imágenes definitivas (comprobados superponiéndolos a cada foto).
+// En móvil solo se ve la franja central (u entre 0,22 y 0,78); los rótulos fuera de ella no aparecen, la tarjeta sí.
 export const SCENES: SceneDef[] = [
-  { id: 'llegada', depthScale: 1.4, signs: [{ stopId: 'racetrack', u: 0.79, v: 0.2, width: 2.6, rotY: -0.35 }] },
+  { id: 'llegada', depthScale: 1.4, signs: [{ stopId: 'racetrack', u: 0.785, v: 0.215, width: 2.4, rotY: -0.35 }] },
   {
     id: 'escuela-taxis',
     depthScale: 1.4,
     signs: [
-      { stopId: 'pobreza', u: 0.3, v: 0.3, width: 2.2, rotY: 0.3 },
-      { stopId: 'ridesharing', u: 0.72, v: 0.28, width: 2.2, rotY: -0.3 },
+      { stopId: 'pobreza', u: 0.3, v: 0.37, width: 1.6, rotY: 0.35 },
+      { stopId: 'ridesharing', u: 0.86, v: 0.335, width: 1.8, rotY: -0.35 },
     ],
   },
   {
     id: 'alquiler-gestoria',
     depthScale: 1.4,
     signs: [
-      { stopId: 'alquiler', u: 0.25, v: 0.32, width: 2.2, rotY: 0.3 },
-      { stopId: 'fiscalis', u: 0.72, v: 0.3, width: 2, rotY: -0.3 },
+      { stopId: 'alquiler', u: 0.13, v: 0.16, width: 2.6, rotY: 0.35 },
+      { stopId: 'fiscalis', u: 0.845, v: 0.205, width: 1.4, rotY: -0.35 },
     ],
   },
   {
     id: 'facultad-taller',
     depthScale: 1.4,
     signs: [
-      { stopId: 'about', u: 0.28, v: 0.28, width: 2, rotY: 0.3 },
-      { stopId: 'making-of', u: 0.72, v: 0.3, width: 2, rotY: -0.3 },
+      { stopId: 'about', u: 0.165, v: 0.33, width: 0.9, rotY: 0.35 },
+      { stopId: 'making-of', u: 0.79, v: 0.33, width: 2.2, rotY: -0.35 },
     ],
   },
-  { id: 'plaza-buzon', depthScale: 1.4, signs: [{ stopId: 'contact', u: 0.55, v: 0.45, width: 1.8, rotY: 0 }] },
+  { id: 'plaza-buzon', depthScale: 1.4, signs: [{ stopId: 'contact', u: 0.83, v: 0.15, width: 1.2, rotY: -0.2 }] },
 ]
 
 export const sceneById = (id: SceneId) => SCENES.find((s) => s.id === id)!
