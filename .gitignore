@@ -8,3 +8,6 @@ coverage/
 tools/depth/.venv/
 __pycache__/
 .gstack/
+
+.vercel
+.env*
