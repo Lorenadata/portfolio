@@ -1,0 +1,55 @@
+/* Réplica de RaceTrack con la paleta de su marca (verdes bosque, esmeralda y salvia) */
+.rt-layout { --rt-forest: #0b2e1f; --rt-emerald: #10b981; --rt-sage: #a7c4b5; --rt-paper: #f6f8f5;
+  display: grid; grid-template-columns: minmax(300px, 400px) 1fr; gap: 32px; align-items: start; }
+.rt-phone { border-radius: 30px; padding: 14px; background: #05110b; border: 1px solid rgba(167,196,181,.35); box-shadow: 0 20px 60px rgba(0,0,0,.5); }
+.rt-phone__bar { display: flex; align-items: center; gap: 10px; padding: 8px 10px 12px; font-weight: 600; color: var(--rt-paper); }
+.rt-logo { display: grid; place-items: center; width: 28px; height: 28px; border-radius: 8px; background: var(--rt-emerald); color: var(--rt-forest); font-size: 12px; font-weight: 800; }
+.rt-demo { margin: 0 0 10px; padding: 8px 10px; border-radius: 8px; background: rgba(250,204,21,.12); color: #fde68a; font-size: 12px; line-height: 1.4; }
+.rt-tabs { display: flex; gap: 6px; margin-bottom: 10px; }
+.rt-tabs button { flex: 1; padding: 8px; border-radius: 8px; border: 1px solid rgba(167,196,181,.25); background: none; color: var(--rt-sage); cursor: pointer; }
+.rt-tabs button[aria-pressed='true'] { background: var(--rt-emerald); border-color: var(--rt-emerald); color: var(--rt-forest); font-weight: 600; }
+.rt-screen { min-height: 460px; max-height: 560px; overflow: auto; padding: 4px; border-radius: 18px; background: var(--rt-paper); color: var(--rt-forest); }
+
+.rt-search { padding: 10px; }
+.rt-filters { display: flex; gap: 6px; flex-wrap: wrap; margin-bottom: 10px; }
+.rt-filters button { padding: 6px 12px; border-radius: 999px; border: 1px solid #cfdcd4; background: #fff; color: var(--rt-forest); cursor: pointer; font-size: 13px; }
+.rt-filters button.is-on { background: var(--rt-forest); color: #fff; border-color: var(--rt-forest); }
+.rt-map { width: 100%; height: 150px; margin-bottom: 8px; }
+.rt-map path { fill: #e3ece6; stroke: #b8cdbf; stroke-width: .6; }
+.rt-map circle { fill: var(--rt-emerald); stroke: #fff; stroke-width: .8; }
+.rt-list { list-style: none; margin: 0; padding: 0; display: grid; gap: 8px; }
+.rt-list li { display: flex; justify-content: space-between; gap: 10px; align-items: center; padding: 10px 12px; border-radius: 12px; background: #fff; border: 1px solid #e1e9e4; }
+.rt-list li div { display: grid; gap: 2px; font-size: 13px; }
+.rt-list strong { font-size: 14px; }
+.rt-spots { color: #0f7a55; font-size: 12px; }
+.rt-btn { padding: 8px 12px; border: 0; border-radius: 10px; background: var(--rt-emerald); color: var(--rt-forest); font-weight: 700; font-size: 13px; cursor: pointer; white-space: nowrap; }
+.rt-btn:disabled { opacity: .4; cursor: default; }
+.rt-btn--ghost { background: transparent; border: 1px solid #b8cdbf; }
+
+.rt-form { display: grid; gap: 12px; padding: 14px; }
+.rt-form h3, .rt-h3 { margin: 0; font-size: 16px; }
+.rt-form label { display: grid; gap: 4px; font-size: 13px; font-weight: 600; }
+.rt-form input, .rt-form select { padding: 10px; border-radius: 10px; border: 1px solid #cfdcd4; font: inherit; font-weight: 400; color: var(--rt-forest); background: #fff; }
+.rt-error { margin: 0; color: #b91c1c; font-size: 13px; }
+.rt-row { display: flex; gap: 8px; justify-content: flex-end; }
+
+.rt-bibwrap { display: grid; gap: 12px; padding: 14px; justify-items: center; }
+.rt-paid { margin: 0; font-size: 12px; color: #0f7a55; text-align: center; }
+.rt-bib { width: 100%; padding: 16px; border-radius: 14px; background: #fff; border: 3px solid var(--rt-forest); text-align: center; }
+.rt-bib__race { margin: 0; font-size: 12px; letter-spacing: .1em; text-transform: uppercase; }
+.rt-bib__num { margin: 6px 0; font-size: 64px; font-weight: 900; line-height: 1; color: var(--rt-forest); }
+.rt-bib__name { margin: 0 0 12px; font-weight: 700; }
+.rt-bib__qr { display: grid; justify-items: center; gap: 6px; font-size: 11px; color: #4b6b5a; }
+.rt-bib__qr img { width: 96px; height: 96px; }
+
+.rt-table { width: 100%; margin-top: 10px; border-collapse: collapse; font-size: 13px; }
+.rt-table th, .rt-table td { padding: 8px 6px; text-align: left; border-bottom: 1px solid #e1e9e4; }
+.rt-table th { font-size: 11px; text-transform: uppercase; letter-spacing: .08em; color: #4b6b5a; }
+
+.rt-side { display: grid; gap: 18px; }
+.rt-stack { margin: 0; font-size: 14px; color: var(--ink-dim); }
+.rt-points { margin: 0; padding-left: 18px; display: grid; gap: 8px; line-height: 1.5; }
+.rt-side .btn { justify-self: start; }
+.rt-screen > div:first-child:not(.rt-search):not(.rt-bibwrap) { padding: 14px; }
+
+@media (max-width: 900px) { .rt-layout { grid-template-columns: 1fr; } }
