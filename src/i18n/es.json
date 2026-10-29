@@ -161,5 +161,16 @@
   "fi.t.factura_linea": "una línea por servicio",
   "fi.t.obligacion_fiscal": "obligación trimestral: modelo 130 (IRPF), primer trimestre",
   "fi.t.alerta": "aviso de vencimiento antes del 20 de abril",
-  "fi.schema": "11 tablas · 10 claves foráneas · reglas de negocio con ENUM · probado en MySQL 8"
+  "fi.schema": "11 tablas · 10 claves foráneas · reglas de negocio con ENUM · probado en MySQL 8",
+  "about.photo": "Lorena Marcos",
+  "about.p1": "Estudio Ciencia de los Datos Aplicada en la Universidad Complutense de Madrid. Me gusta el momento en que un conjunto de datos desordenado se convierte en una respuesta con la que alguien puede actuar, y me gusta construir el producto donde vive esa respuesta.",
+  "about.p2": "Trabajo con estadística oficial, calidad de datos y modelización estadística en R y Python, y construyo productos full-stack con FastAPI, PostgreSQL y React.",
+  "about.edu": "Formación",
+  "about.edu.v": "Grado en Ciencia de los Datos Aplicada · Universidad Complutense de Madrid · 2023 – actualidad",
+  "about.tools": "Herramientas",
+  "about.tools.v": "R (tidyverse, ggplot2, Quarto) · Python · SQL · ponderación de encuestas · EDA · FastAPI · PostgreSQL/PostGIS · React · Docker · Git",
+  "about.langs": "Idiomas",
+  "about.langs.v": "Español (nativo) · Inglés (B2)",
+  "contact.lead": "Busco prácticas de Data Science / Data Analytics a partir de febrero de 2027, en Madrid o en remoto. Escríbeme, respondo rápido.",
+  "contact.cv": "Descargar mi CV (PDF)"
 }

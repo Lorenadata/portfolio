@@ -1,0 +1,8 @@
+.about { display: grid; grid-template-columns: 180px 1fr; gap: 32px; align-items: start; }
+.about__photo { width: 180px; height: 180px; border-radius: 50%; object-fit: cover; border: 3px solid var(--neon); box-shadow: 0 0 40px color-mix(in srgb, var(--neon) 30%, transparent); }
+.about__p { margin: 0; line-height: 1.6; }
+.about__seeking { margin: 0; padding: 12px 16px; border-left: 3px solid var(--neon); font-family: var(--serif); font-size: 19px; }
+.about__facts { display: grid; grid-template-columns: max-content 1fr; gap: 8px 18px; margin: 0; font-size: 14px; }
+.about__facts dt { color: var(--ink-dim); text-transform: uppercase; letter-spacing: .15em; font-size: 11px; padding-top: 3px; }
+.about__facts dd { margin: 0; }
+@media (max-width: 760px) { .about { grid-template-columns: 1fr; justify-items: center; } .about__facts { grid-template-columns: 1fr; } }

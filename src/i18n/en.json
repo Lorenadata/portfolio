@@ -161,5 +161,16 @@
   "fi.t.factura_linea": "one line per service",
   "fi.t.obligacion_fiscal": "quarterly filing: form 130 (income tax), Q1",
   "fi.t.alerta": "deadline warning before 20 April",
-  "fi.schema": "11 tables · 10 foreign keys · domain rules enforced with ENUMs · tested on MySQL 8"
+  "fi.schema": "11 tables · 10 foreign keys · domain rules enforced with ENUMs · tested on MySQL 8",
+  "about.photo": "Lorena Marcos",
+  "about.p1": "I study Applied Data Science at Universidad Complutense de Madrid. I like the moment when a messy dataset becomes an answer someone can act on, and I like building the product that answer lives in.",
+  "about.p2": "I work with official statistics, data quality and statistical modelling in R and Python, and I build full-stack products with FastAPI, PostgreSQL and React.",
+  "about.edu": "Education",
+  "about.edu.v": "BSc Applied Data Science · Universidad Complutense de Madrid · 2023 – present",
+  "about.tools": "Toolbox",
+  "about.tools.v": "R (tidyverse, ggplot2, Quarto) · Python · SQL · survey weighting · EDA · FastAPI · PostgreSQL/PostGIS · React · Docker · Git",
+  "about.langs": "Languages",
+  "about.langs.v": "Spanish (native) · English (B2)",
+  "contact.lead": "I'm looking for a Data Science / Data Analytics internship from February 2027, in Madrid or remote. Write to me, I reply quickly.",
+  "contact.cv": "Download my CV (PDF)"
 }
