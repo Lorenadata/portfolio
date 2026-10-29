@@ -40,7 +40,7 @@
 .minimap__street { stroke: rgba(245,243,238,.55); stroke-width: 3; }
 .minimap__grid { stroke: rgba(245,243,238,.15); stroke-width: 1; fill: none; }
 .minimap__map .is-current { filter: drop-shadow(0 0 4px currentColor); }
-.minimap__legend { list-style: none; margin: 0; padding: 0; font-family: var(--serif); font-size: 15px; }
+.minimap__legend { list-style: none; margin: 0; padding: 10px 14px; border-radius: 10px; background: var(--glass); backdrop-filter: blur(10px); font-family: var(--serif); font-size: 15px; }
 .minimap__legend button { display: flex; align-items: center; gap: 10px; background: none; border: 0; color: var(--ink-dim); font: inherit; padding: 3px 0; cursor: pointer; text-shadow: 0 1px 8px rgba(0,0,0,.9); }
 .minimap__legend button:hover, .minimap__legend button[aria-current] { color: var(--ink); }
 .swatch { width: 8px; height: 8px; border-radius: 50%; }

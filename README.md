@@ -1,5 +1,7 @@
 # Lorena Marcos · Immersive Data Science Portfolio
 
+![The street, first stop: RaceTrack](docs/screenshot.jpg)
+
 **[lorenamarcos.dev](https://lorenamarcos.dev)** · A rainy, neon-lit street at night where every shop is one of my projects, and every project opens working.
 
 ![React](https://img.shields.io/badge/React_18-61DAFB?logo=react&logoColor=black)
