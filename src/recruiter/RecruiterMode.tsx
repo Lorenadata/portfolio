@@ -1,5 +1,5 @@
 import type { Stop } from '../content/stops'
-import { CONTACT } from '../content/stops'
+import { CONTACT, EXTERNAL_PROJECTS } from '../content/stops'
 import { useI18n } from '../i18n'
 import './recruiter.css'
 
@@ -53,6 +53,17 @@ export function RecruiterMode({ stops, canWalk = true }: { stops: Stop[]; canWal
                 {s.report && (
                   <a href={s.report} target="_blank" rel="noreferrer">{t('card.report')}</a>
                 )}
+              </div>
+            </article>
+          ))}
+          {EXTERNAL_PROJECTS.map((p) => (
+            <article key={p.id} className="rec__card" style={{ ['--neon' as string]: p.neon }}>
+              <h3>{t(`name.${p.id}`)}</h3>
+              <p className="rec__tagline">{t(`tagline.${p.id}`)}</p>
+              <p className="rec__result">{t(`result.${p.id}`)}</p>
+              <div className="rec__links">
+                <a href={p.demo} target="_blank" rel="noreferrer">{t('card.demo')} →</a>
+                <a href={p.repo} target="_blank" rel="noreferrer">{t('recruiter.code')}</a>
               </div>
             </article>
           ))}

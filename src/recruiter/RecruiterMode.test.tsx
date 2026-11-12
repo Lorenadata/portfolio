@@ -3,7 +3,7 @@ import { cleanup, screen, within } from '@testing-library/react'
 import { renderI18n } from '../test/render'
 import { RecruiterMode } from './RecruiterMode'
 import App from '../App'
-import { STOPS } from '../content/stops'
+import { EXTERNAL_PROJECTS, STOPS } from '../content/stops'
 
 afterEach(() => {
   cleanup()
@@ -30,13 +30,21 @@ describe('RecruiterMode', () => {
     renderI18n(<RecruiterMode stops={stops} />)
     const cards = screen.getAllByRole('article')
     const projectIds = stops.filter((s) => s.id !== 'about' && s.id !== 'contact').map((s) => s.id)
-    expect(cards).toHaveLength(projectIds.length)
+    expect(cards).toHaveLength(projectIds.length + EXTERNAL_PROJECTS.length)
     expect(screen.queryByText('Fiscalis data model')).toBeNull()
     const pobreza = cards.find((c) => within(c).queryByText('Child poverty in Spain'))!
     expect(within(pobreza).getByText(/34.7%/)).toBeInTheDocument()
     expect(within(pobreza).getByRole('link', { name: /enter project/i })).toHaveAttribute('href', '#/p/pobreza')
     expect(within(pobreza).getByRole('link', { name: /code/i })).toHaveAttribute('href', 'https://github.com/Lorenadata/pobreza_infantil_espana')
     expect(within(pobreza).getByRole('link', { name: /full report/i })).toBeInTheDocument()
+  })
+
+  it('ESCUDO MADRID aparece como tarjeta con demo y código, sin parada en la calle', () => {
+    renderI18n(<RecruiterMode stops={STOPS} />)
+    const card = screen.getAllByRole('article').find((c) => within(c).queryByText('ESCUDO MADRID'))!
+    expect(within(card).getByRole('link', { name: /live demo/i })).toHaveAttribute('href', 'https://lorenadata-escudo-madrid.hf.space')
+    expect(within(card).getByRole('link', { name: /code/i })).toHaveAttribute('href', 'https://github.com/Lorenadata/escudo-madrid-incendios')
+    expect(within(card).queryByRole('link', { name: /enter project/i })).toBeNull()
   })
 
   it('ofrece volver a la calle', () => {

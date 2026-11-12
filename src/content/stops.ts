@@ -37,6 +37,22 @@ export const STOPS: Stop[] = [
   { id: 'contact', sceneId: 'plaza-buzon', priority: 2, neon: '#f87171', enabled: true },
 ]
 
+/** Proyectos sin parada en la calle: solo aparecen como tarjeta en el Recruiter Mode. */
+export interface ExternalProject {
+  id: string
+  neon: string
+  repo: string
+  demo: string
+}
+
+export const EXTERNAL_PROJECTS: ExternalProject[] = [
+  {
+    id: 'escudo', neon: '#f97316',
+    repo: 'https://github.com/Lorenadata/escudo-madrid-incendios',
+    demo: 'https://lorenadata-escudo-madrid.hf.space',
+  },
+]
+
 export function activeStops(stops: Stop[] = STOPS): Stop[] {
   return stops.filter((s) => s.enabled)
 }
