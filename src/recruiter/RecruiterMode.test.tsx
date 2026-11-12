@@ -14,7 +14,7 @@ describe('RecruiterMode', () => {
   it('dice quién es Lorena y qué busca', () => {
     renderI18n(<RecruiterMode stops={STOPS} />)
     expect(screen.getByRole('heading', { level: 1, name: 'Lorena Marcos' })).toBeInTheDocument()
-    expect(screen.getByText(/internship from February 2027/)).toBeInTheDocument()
+    expect(screen.getByText(/role from February 2027/)).toBeInTheDocument()
   })
 
   it('el CV, el email y LinkedIn están en la cabecera, antes de los proyectos', () => {
